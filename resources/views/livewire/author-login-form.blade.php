@@ -6,13 +6,19 @@
         <!-- Justify -->
         <div class="app-brand justify-content-center">
         </div>
-        <!-- /Logo -->
+        <!-- /Logo (Not Done) -->
         <h4 class="mb-2">Login to your account 🔑</h4>
         <p class="mb-4">Please sign-in to your account to continue</p>
 
         @if(Session::get('fail'))
             <div class="alert alert-danger">
                 {{ Session::get('fail') }}
+            </div>
+        @endif
+
+        @if(Session::get('success'))
+            <div class="alert alert-success">
+                {{!! Session::get('success') !!}}
             </div>
         @endif
         

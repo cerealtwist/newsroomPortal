@@ -21,6 +21,7 @@ Route::prefix('author')->name('author.')->group(function(){
     Route::middleware(['guest:web'])->group(function(){
         Route::view('/login', 'backend.pages.auth.login')->name('login');
         Route::view('/forgot-password', 'backend.pages.auth.forgot')->name('forgot-password');
+        Route::get('/password/reset/{token}', [AuthorController::class, 'ResetForm'])->name('reset-form');
     });
 
     Route::middleware(['auth:web'])->group(function(){
