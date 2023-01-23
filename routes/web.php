@@ -15,10 +15,6 @@ use \App\Http\Controllers\AuthorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::prefix('admin')->name('admin.')->group(function(){});
 
 Route::prefix('author')->name('author.')->group(function(){
@@ -27,8 +23,9 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::view('/forgot-password', 'backend.pages.auth.forgot')->name('forgot-password');
     });
 
-    Route::middleware([])->group(function(){
+    Route::middleware(['auth:web'])->group(function(){
         Route::get('/home', [AuthorController::class, 'index'])->name('home');
+        Route::post('/logout', [AuthorController::class, 'logout'])->name('logout');
     });
 });
 
