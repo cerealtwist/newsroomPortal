@@ -27,7 +27,6 @@
                 </defs>
                 <g id="g-app-brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
-                    <g id="Icon" transform="translate(27.000000, 15.000000)">
                       <g id="Mask" transform="translate(0.000000, 8.000000)">
                         <mask id="mask-2" fill="white">
                           <use xlink:href="#path-1"></use>
@@ -110,16 +109,16 @@
           </li>
 
           <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Pages</span>
+            <span class="menu-header-text">Profile</span>
           </li>
           <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <i class="menu-icon tf-icons bx bxs-user-account"></i>
               <div data-i18n="Account Settings">Account Settings</div>
             </a>
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="pages-account-settings-account.html" class="menu-link">
+                <a href="{{ route('author.profile') }}" class="menu-link">
                   <div data-i18n="Account">Account</div>
                 </a>
               </li>
@@ -135,7 +134,7 @@
               </li>
             </ul>
           </li>
-          <li class="menu-item">
+          {{-- <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
               <div data-i18n="Authentications">Authentications</div>
@@ -175,8 +174,8 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <!-- Components -->
+          </li> --}}
+          {{-- <!-- Components -->
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
           <!-- Cards -->
           <li class="menu-item">
@@ -315,7 +314,7 @@
               <i class="menu-icon tf-icons bx bx-crown"></i>
               <div data-i18n="Boxicons">Boxicons</div>
             </a>
-          </li>
+          </li> --}}
 
           <!-- Forms & Tables -->
           <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>

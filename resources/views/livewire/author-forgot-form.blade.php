@@ -22,4 +22,5 @@
         </div>
         <button class="btn btn-primary d-grid w-100" type="submit">Send Reset Link</button>
       </form>
+      
 </div>

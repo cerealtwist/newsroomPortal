@@ -31,17 +31,18 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="../backend/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href={{asset('../backend/assets/vendor/fonts/boxicons.css')}} />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="../backend/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="../backend/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="../backend/assets/css/demo.css" />
+    <link rel="stylesheet" href={{asset("../backend/assets/vendor/css/core.css")}} class="template-customizer-core-css" />
+    <link rel="stylesheet" href={{asset("../backend/assets/vendor/css/theme-default.css")}} class="template-customizer-theme-css" />
+    <link rel="stylesheet" href={{asset("../backend/assets/css/demo.css")}} />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href={{asset("../backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css")}} />
 
-    <link rel="stylesheet" href="../backend/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href={{asset("../backend/assets/vendor/libs/apex-charts/apex-charts.css")}} />
+    <link rel="stylesheet" href={{asset("../backend/dist/libs/ijabo/ijabo.min.css")}} />
     @stack('stylesheets')
     @livewireStyles
 
@@ -56,11 +57,17 @@
   </head>
 
   <body>
-      @include('backend.layouts.inc.navbar')
+    @include('backend.layouts.inc.navbar')
+
+    <!-- Content -->
+
+    @yield('content')
+
+    <!-- / Content -->
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="../backend/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="{{ asset('../backend/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="../backend/assets/vendor/libs/popper/popper.js"></script>
     <script src="../backend/assets/vendor/js/bootstrap.js"></script>
     <script src="../backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
@@ -73,6 +80,9 @@
 
     <!-- Main JS -->
     <script src="../backend/assets/js/main.js"></script>
+
+    <!-- Libs JS -->
+    <script src="{{ asset('backend/dist/libs/ijabo/ijabo.min.js') }}"></script>
 
     <!-- Page JS -->
     <script src="../backend/assets/js/dashboards-analytics.js"></script>

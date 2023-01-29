@@ -2,7 +2,7 @@
 
 <html
   lang="en"
-  class="light-style customizer-hide"
+  class="light-style layout-menu-fixed"
   dir="ltr"
   data-theme="theme-default"
   data-assets-path="../backend/assets/"
@@ -42,10 +42,11 @@
     <link rel="stylesheet" href={{asset("../backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css")}} />
 
     <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href={{asset("../backend/assets/vendor/css/pages/page-auth.css")}} />
+    <link rel="stylesheet" href={{asset("../backend/dist/libs/ijabo/ijabo.min.css")}} />
+
     @stack('stylesheets')
     @livewireStyles
+
     <!-- Helpers -->
     <script src="../backend/assets/vendor/js/helpers.js"></script>
 
@@ -55,11 +56,10 @@
   </head>
 
   <body>
-    <!-- Content -->
-
+    
+    <!-- / Layout wrapper -->
     @yield('content')
-
-    <!-- / Content -->
+    
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="../backend/assets/vendor/libs/jquery/jquery.js"></script>
@@ -76,10 +76,25 @@
     <script src="../backend/assets/js/main.js"></script>
 
     <!-- Page JS -->
+    <script src="../backend/assets/js/pages-account-settings-account.js"></script>
+
+    <!-- Libs JS -->
+    <script src="{{ asset('backend/dist/libs/ijabo/ijabo.min.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     @stack('scripts')
     @livewireScripts
+    <script>
+      window.addEventListener('showToastr', function(event){
+        toastr.remove();
+        event.detail.type === 'info' ? toastr.info(event.detail.message)
+        : event.detail.type === 'success' ? toastr.success(event.detail.message)
+        : event.detail.type === 'error' ? toastr.error(event.detail.message)
+        : event.detail.type === 'warning' ? toastr.warning(event.detail.message)
+        : false;
+
+      });
+    </script>
   </body>
 </html>
