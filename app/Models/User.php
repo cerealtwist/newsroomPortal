@@ -50,4 +50,12 @@ class User extends Authenticatable
     public function authorType(){
         return $this->belongsTo(Type::class, 'type','id');
     }
+
+    public function getPictureAttribute($value){
+        if($value){
+            return asset('../backend/assets/img/avatars/'.$value);
+        }else{
+            return asset('../backend/assets/img/avatars/1.png');
+        }
+    }
 }

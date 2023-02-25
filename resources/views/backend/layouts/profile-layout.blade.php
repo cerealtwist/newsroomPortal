@@ -20,7 +20,9 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../backend/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{
+      \App\Models\Setting::find(1)->blog_icon
+    }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,6 +45,7 @@
 
     <!-- Page CSS -->
     <link rel="stylesheet" href={{asset("../backend/dist/libs/ijabo/ijabo.min.css")}} />
+    <link rel="stylesheet" href={{asset("../backend/dist/libs/ijaboCropTool/ijaboCropTool.min.css")}} />
 
     @stack('stylesheets')
     @livewireStyles
@@ -80,6 +83,9 @@
 
     <!-- Libs JS -->
     <script src="{{ asset('backend/dist/libs/ijabo/ijabo.min.js') }}"></script>
+    <script src="{{ asset('backend/dist/libs/ijaboCropTool/ijaboCropTool.min.js') }}"></script>
+    <script src="{{ asset('backend/dist/libs/ijaboViewer/jquery.IjaboViewer.min.js') }}"></script>
+    
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

@@ -5,8 +5,13 @@
         <div class="card-body">
         <!-- Justify -->
         <div class="app-brand justify-content-center">
+            <div class="text-center mt-2 mb-2 mr-1">
+                <img src="../backend\assets\img\logo\1677296607_29721_bntv_logo.png" alt="" height="40" width=200>
+                
+            </div>
         </div>
         <!-- /Logo (Not Done) -->
+
         <h4 class="mb-2">Login to your account 🔑</h4>
         <p class="mb-4">Please sign-in to your account to continue</p>
 

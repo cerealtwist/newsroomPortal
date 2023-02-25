@@ -1,5 +1,5 @@
 @extends('backend.layouts.profile-layout')
-@section('pageTitle', isset($pageTitle) ? $pageTitle : 'My Profile')
+@section('pageTitle', isset($pageTitle) ? $pageTitle : 'Settings')
 @section('content')
 
     <!-- Layout wrapper -->
@@ -116,13 +116,13 @@
                 <li class="menu-header small text-uppercase">
                   <span class="menu-header-text">Profile</span>
                 </li>
-                <li class="menu-item active open">
+                <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bxs-user-account"></i>
                       <div data-i18n="Account Settings">Account Settings</div>
                     </a>
                     <ul class="menu-sub">
-                      <li class="menu-item active">
+                      <li class="menu-item">
                         <a href="pages-account-settings-account.html" class="menu-link">
                           <div data-i18n="Account">Account</div>
                         </a>
@@ -216,107 +216,84 @@
             <!-- Navbar -->
   
             @include('backend.layouts.inc.header')
-  
-            <!-- / Navbar -->
-  
             <!-- Content wrapper -->
+            
             <div class="content-wrapper">
-              <!-- Content -->
-  
-              <div class="container-xxl flex-grow-1 container-p-y">
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Account</h4>
-  
-                <div class="row">
-                  <div class="col-md-12">
-                    <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                      <li class="nav-item">
-                        <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Account</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="pages-account-settings-notifications.html"
-                          ><i class="bx bx-bell me-1"></i> Notifications</a
-                        >
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="pages-account-settings-connections.html"
-                          ><i class="bx bx-link-alt me-1"></i> Connections</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="card mb-4">
-                      <h5 class="card-header">Profile Details</h5>
-                      <!-- Account -->
-                      <div class="card-body">
-                        <div class="d-flex align-items-start align-items-sm-center gap-4">
-                          <img
-                            src="../backend/assets/img/avatars/1.png"
-                            alt="user-avatar"
-                            class="d-block rounded"
-                            height="100"
-                            width="100"
-                            id="uploadedAvatar"
-                          />
-                          <div class="button-wrapper">
-                            <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                              <a class="bx bx-upload d-block d-sm-none"></a>
-                              <span class="d-none d-sm-block" onclick="event.preventDefault();document.getElementById('changeAuthorPictureFile').click();">Upload new photo</span>
-                              <input
-                              type="file"
-                              id="changeAuthorPictureFile"
-                              class="account-file-input"
-                              hidden
-                              onchange="this.dispatchEvent(new InputEvent('input'));"
-                              />
-                            </label>
-                            <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                              <i class="bx bx-reset d-block d-sm-none"></i>
-                              <span class="d-none d-sm-block">Reset</span>
-                            </button>
-  
-                            <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                <!-- Content -->
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <div class="nav-align-top">
+                        <ul class="nav nav-tabs" role="tablist">
+                          <li class="nav-item">
+                            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-align-home">Details</button>
+                          </li>
+                          <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-align-profile">Logo & Images</button>
+                          </li>
+                          <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#navs-top-align-messages">Messages</button>
+                          </li>
+                        </ul>
+                        <div class="tab-content">
+                          <div class="tab-pane fade show active" id="navs-top-align-home">
+                            @livewire('author-general-settings')
                           </div>
-                        </div>
-                      </div>
-                      <hr class="my-0" />
-                      <div class="card-body">
-                        @livewire('author-details')
-                      </div>
-                      <!-- /Account -->
-                    </div>
-                    <div class="card">
-                      <h5 class="card-header">Delete Account</h5>
-                      <div class="card-body">
-                        <div class="mb-3 col-12 mb-0">
-                          <div class="alert alert-warning">
-                            <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
-                            <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
-                          </div>
-                        </div>
-                        <form id="formAccountDeactivation" onsubmit="return false">
-                          <div class="form-check mb-3">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              name="accountActivation"
-                              id="accountActivation"
-                            />
-                            <label class="form-check-label" for="accountActivation"
-                              >I confirm my account deactivation</label
-                            >
-                          </div>
-                          <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- / Content -->
+                          <div class="tab-pane fade" id="navs-top-align-profile">
+                            {{-- Blog Logo --}}
+                            <div class="card-body">
+                              <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                <div class="mb-2" style="max-width: 200px">
+                                  <img
+                                    src=""
+                                    alt=""
+                                    class="img-thumbnail"
+                                    id="logo-image-preview"
+                                    data-ijabo-default-img="{{
+                                      \App\Models\Setting::find(1)->blog_logo
+                                    }}"
+                                  />
+                                </div>
+                                <form action="{{ route('author.change-blog-logo') }}" method="post" id="changeBlogLogoForm">
+                                  @csrf
+                                  <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload logo IMG</label>
+                                    <input class="form-control" type="file" name="blog_logo"/>
+                                  </div>
+                                  <button class="btn btn-outline-primary mb-2">Change Logo</button>
+                                  <p class="text-muted mb-0">Allowed JPG, JPEG or PNG. Max size of 800K</p>
+                                </form>
+                              </div>
+                            </div>
 
-  
-              <div class="content-backdrop fade"></div>
+                            {{-- Blog Icon --}}
+
+                            <div class="card-body">
+                              <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                <div class="mb-2" style="max-width: 200px">
+                                  <img
+                                    src=""
+                                    class="img-thumbnail"
+                                    id="icon-image-preview"
+                                    data-ijabo-default-img="{{
+                                      \App\Models\Setting::find(1)->blog_icon
+                                    }}"
+                                  />
+                                </div>
+                                <form action="{{ route('author.change-blog-icon') }}" method="post" id="changeBlogIconForm">
+                                  @csrf
+                                  <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload icon IMG</label>
+                                    <input class="form-control" type="file" name="blog_icon"/>
+                                  </div>
+                                  <button class="btn btn-outline-primary mb-2">Change Icon</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
             </div>
-            <!-- Content wrapper -->
+
           </div>
           <!-- / Layout page -->
         </div>
@@ -326,23 +303,83 @@
       </div>
       
 @endsection
+
 @push('scripts')
       <script>
-        $('#changeAuthorPictureFile').ijaboCropTool({
-          preview : '',
-          setRatio:1,
-          allowedExtensions: ['jpg', 'jpeg','png'],
-          buttonsText:['CROP','QUIT'],
-          buttonsColor:['#30bf7d','#ee5155', -15],
-          processUrl:'{{ route("author.change-profile-picture") }}',
-          withCSRF:['_token','{{  csrf_token() }}'],
-          onSuccess:function(message, element, status){
-            Livewire.emit('updateTopHeader');
-            toastr.success(message);
-          },
-          onError:function(message, element, status){
-            toastr.console.error();(message);
-          }
+        $('input[name="blog_logo"]').ijaboViewer({
+            preview:'#logo-image-preview',
+            imageShape:'rectangular',
+            allowedExtensions:['jpg','jpeg','png'],
+            onErrorShape:function(message, element) {
+              alert(message);
+            },
+            onInvalidType:function(message, element) {
+              alert(message);
+            },
+            onSuccess:function(message, element) {
+
+            }
         });
+
+        $('input[name="blog_icon"]').ijaboViewer({
+          preview:'#icon-image-preview',
+          imageShape:'square',
+          allowedExtensions:['ico'],
+          onErrorShape:function(message, element){
+            alert(message);
+          },
+          onInvalidType:function(message, element){
+            alert(message);
+          },
+          onSuccess:function(message, element){
+   
+          }
+        })
+
+        $('#changeBlogLogoForm').submit(function(e){
+          e.preventDefault();
+          var form = this;
+          $.ajax({
+            url:$(form).attr('action'),
+            method:$(form).attr('method'),
+            data:new FormData(form),
+            processData:false,
+            dataType:'json',
+            contentType:false,
+            beforeSend:function(){},
+            success:function(data){
+              toastr.remove();
+              if(data.status == 1){
+                toastr.success(data.msg);
+                $(form)[0].reset();
+              }else{
+                toastr.error(data.msg);
+              }
+            }
+          })
+        })
+
+        $('#changeBlogIconForm').submit(function(e){
+          e.preventDefault();
+          var form = this;
+          $.ajax({
+            url:$(form).attr('action'),
+            method:$(form).attr('method'),
+            data:new FormData(form),
+            processData:false,
+            dataType:'json',
+            contentType:false,
+            beforeSend:function(){},
+            success:function(data){
+              toastr.remove();
+              if(data.status == 1){
+                toastr.success(data.msg);
+                $(form)[0].reset();
+              }else{
+                toastr.error(data.msg);
+              }
+            }
+          })
+        })
       </script>
 @endpush
