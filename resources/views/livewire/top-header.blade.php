@@ -56,6 +56,16 @@ id="layout-navbar">
                 <span class="align-middle">My Profile</span>
                 </a>
             </li>
+
+            @if( auth()->user()->type == 1 )
+            <li>
+                <a class="dropdown-item" href="{{ route('author.authors') }}">
+                <i class="bx bx-group me-2"></i>
+                <span class="align-middle">Authors</span>
+                </a>
+            </li>
+            @endif
+
             <li>
                 <a class="dropdown-item" href="{{route('author.settings')}}">
                 <i class="bx bx-cog me-2"></i>

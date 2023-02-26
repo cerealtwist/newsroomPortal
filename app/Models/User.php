@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
         'type',
         'picture',
@@ -27,6 +28,7 @@ class User extends Authenticatable
         'blocked',
         'direct_publish',
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,5 +59,14 @@ class User extends Authenticatable
         }else{
             return asset('../backend/assets/img/avatars/1.png');
         }
+    }
+
+    public function initial(){
+        $words = explode(" ", $this->name );
+        $initial = null;
+        foreach ($words as $w) {
+            $initial .= $w[0];
+        }
+        return strtoupper($initial);
     }
 }

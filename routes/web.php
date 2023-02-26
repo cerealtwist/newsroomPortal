@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use \App\Http\Controllers\AuthorController;
+use App\Http\Livewire\Authors;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::prefix('author')->name('author.')->group(function(){
         Route::view('/settings', 'backend.pages.settings')->name('settings');
         Route::post('/change-blog-logo', [AuthorController::class, 'changeBlogLogo'])->name('change-blog-logo');
         Route::post('/change-blog-icon', [AuthorController::class, 'changeBlogIcon'])->name('change-blog-icon');
+        Route::view('/authors', 'backend.pages.authors')->name('authors');
+        Route::post('/authors', [Authors::class, 'addAuthor'])->name('authors.add');
     });
 });
 
